@@ -1,0 +1,91 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block title %}Admin{% endblock title %}
+{% block content %}
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Dashboard</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+
+        <div class="row">
+            <div class="card mb-4 col-md-6">
+                <div class="row">
+                    <div class="card-header col-md-12">
+                        <i class="fas fa-table mr-1"></i>
+                        My Jobs
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card-body col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>S.N</th>
+                                        <th>Job</th>
+                                        <th>Company</th>
+                                        <th>Deadline</th>
+                                        <th>Vaccancy</th>
+                                        <th>Salary</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for job in jobs%}
+                                    <tr>
+                                        <td>{{ forloop.counter}}</td>
+                                        <td>{{ job.position}}</td>
+                                        <td>{{ job.company}}</td>
+                                        <td>{{ job.deadline}}</td>
+                                        <td>{{job.no_of_vaccancy}}</td>
+                                        <td>{{ job.salary }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <a href="{% url 'job:job-list' %}">See More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4 col-md-6">
+                <div class="row">
+                    <div class="card-header col-md-12">
+                        <i class="fas fa-table mr-1"></i>
+                        Job Applications
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card-body col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>S.N</th>
+                                        <th>Applicant Name</th>
+                                        <th>Job</th>
+                                        <th>Company</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for application in applications %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ application.name }}</td>
+                                        <td>{{ application.job.position }}</td>
+                                        <td>{{ application.job.company }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <a href="{% url 'job:applications' %}">See More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}

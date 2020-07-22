@@ -1,0 +1,18 @@
+{% extends "admin_base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block css%}
+  <link rel="stylesheet" href="{% static 'css/jquery.datetimepicker.min.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+{% include 'form.html' %}
+
+{% endblock content %}
+
+{% block js%}
+<script src="{% static 'js/jquery.datepicker.js'%}"></script>
+{% endblock js%}

@@ -1,0 +1,57 @@
+{% extends 'index_base.html'%}
+{% load static %}
+{% block content %}
+
+    <div class="unit-5 overlay" style="background-image: url('{% static 'client/images/hero_2.jpg' %}');">
+      <div class="container text-center">
+        <h2 class="mb-0">Resume</h2>
+      </div>
+    </div>
+
+    <div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+       
+          <div class="col-md-12 col-lg-8 mb-5">   
+            <div class="p-5 bg-white">
+
+              <div class="mb-4 mb-md-3 mr-5">
+               <div class="job-post-item-header d-flex align-items-center">
+                 <h2 class="mr-3 text-black h4">{{ resume.name }}</h2>
+               </div>
+               <div class="job-post-item-body d-block d-md-flex">
+                 <div class="mr-3"><span class="fl-bigmug-line-portfolio23"></span>{{resume.dob}}</div>
+                 <div><span class="fl-bigmug-line-big104"></span> <span>{{resume.permanent_address}}</span></div>
+               </div>
+              </div>
+
+              <h6>Name:</h6><p>{{resume.name}}</p>
+              <h6>Date Of Birth:</h6><p>{{resume.dob}}</p>
+              <h6>Current Address:</h6><p>{{resume.current_address}}</p>
+              <h6>Permanent Address:</h6><p>{{resume.permanent_address}}</p>
+              <h6>Phone No:</h6><p>{{resume.phone_no}}</p>
+              <h6>Martial Status:</h6><p>{{resume.martial_status}}</p>        
+              <h6>Website:</h6><p>{{resume.website}}</p>
+              <h6>Languages:</h6><p>{{resume.languages}}</p>
+              <h6>Hobbies:</h6><p>{{resume.Hobbies}}</p>
+              <h6>Skills:</h6><p>{{resume.skills}}</p>
+              <h6>Trainings or Certification:</h6><p>{{resume.training_and_certification}}</p>
+              <h6>Experience:</h6><p>{{resume.experience}}</p>
+              <h6>Project Description:</h6><p>{{resume.project_description}}</p>
+              <h6>Project Link:</h6><p>{{resume.project_link}}</p>
+
+
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            
+            
+            <div class="p-4 mb-3 bg-white">
+            <a href="{% url 'job:resume-update' resume.id %}" class="btn btn-primary  py-2 px-4">Update Resume</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content%}

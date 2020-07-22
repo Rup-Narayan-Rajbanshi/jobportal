@@ -1,0 +1,67 @@
+{% extends "admin_base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<div class="card mb-4">
+    <div class="card-header">
+        <form method="get">
+            <div class="row row col-md-12 pt-2">
+                <div class="col-md-3">{{form.company.label}}{{form.company}}</div>
+                <div class="col-md-3">{{form.name.label}}{{form.name}}</div>
+                <div class="col-md-3">{{form.education.label}}{{form.education}}</div>
+                <div class="col-md-3">{{form.set_interview.label}}{{form.set_interview}}</div>
+                <div class="col-md-3">{{form.select.label}}{{form.select}}</div>
+                <div class="col-md-3"><input type="submit" name="filter" value="Filter" class="btn btn-success btn-block" style="margin-top: 23px;"></div>
+                <div class="col-md-3"><a href="{% url 'job:applications'%}" class="btn btn-success btn-block" style="margin-top: 23px;">Reset Filter</a></div>
+                <div class="col-md-3"><input type="submit" name="download" value="Download" class="btn btn-success btn-block" style="margin-top: 23px;"></div>		
+		</form>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>S.N</th>
+                        <th>Company</th>
+                        <th>Name</th>
+                        <th>CV</th>
+                        <th>Resume</th>
+                        <th>Action</th>
+                        <th>Selected</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	{% for application in applications %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{application.job.company}}</td>
+                        <td>{{application.name}}</td>
+                        <td>{% if application.cv %}
+                            <a href="{{application.cv.url}}" target="_blank">{{application.cv}}</a>
+                            {% endif %}
+                        </td>
+                        <td>{% if application.user.resume %}
+                            <a href="{% url 'job:applicant-resume' application.user.resume.id %}">Resume</a>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'job:application-details' application.pk %}" class="btn btn-success btn-sm">View Detail</a>
+                            {% if application.set_interview == False %}
+                                <a href="{% url 'job:set-interview' application.id %}" class="btn btn-success btn-sm">Set Interview</a>
+                            {% else %}
+                                {% if application.select == False %}
+                                <a href="{% url 'job:select' application.id %}" class="btn btn-success btn-sm">Hire</a>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+                        <td>{% if application.select == True %}Yes{%else%}No{%endif%}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% include 'paginator.html'%}
+        </div>
+    </div>
+</div>
+{% endblock content %}

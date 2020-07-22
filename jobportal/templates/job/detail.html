@@ -1,0 +1,54 @@
+{% extends "admin_base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<div class="site-section bg-light">
+	<div class="container">
+	    <div class="row"> 
+	    	<div class="col-md-12 col-lg-8 mb-5">
+		        <div class="p-5 bg-white">
+					<div class="mb-4 mb-md-5 mr-5">
+						<div class="job-post-item-header d-flex align-items-center">
+			            	<h2 class="mr-3 text-black h4">{{job.position}}</h2>
+			            	<div class="badge-wrap">
+			            		<span class="border border-warning text-warning py-2 px-4 rounded">{{ job.job_type }}</span>
+			            	</div>
+			           	</div>
+		           		<div class="job-post-item-body d-block d-md-flex">
+		           			<div class="mr-3">
+		           				<span class="fl-bigmug-line-portfolio23"></span><a href="#">{{ job.company}}</a>
+		           			</div>
+		            		<div>
+		            			<span class="fl-bigmug-line-big104"></span> <span>{{job.location}}</span>
+		            		</div>
+		        		</div>
+		        	</div>
+	        	<div class="img-border mb-5">
+		            
+	        	</div>
+					<h6>Position:</h6><p>{{job.position}}</p><br>
+					<h6>Experience:</h6><p>{{job.experience}}</p><br>
+					<h6>No. of Vacancy:</h6><p>{{job.no_of_vacancy}}</p><br>
+					<h6>Description:</h6><p>{{job.description|linebreaks}}</p><br>
+					<h6>Requirements:</h6><p>{{job.requirements|linebreaks}}</p><br>
+					<h6>Salary:</h6><p>{{job.salary}}</p><br>
+					<h6>Deadline:</h6><p>{{job.deadline}}</p><br>
+		        </div>
+	    	</div>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}
+
+
+<h6>Company:</h6><p>{{ job.company}}</p><br>
+<h6>Job Title:</h6><p>{{job.title}}</p><br>
+<h6>Position:</h6><p>{{job.position}}</p><br>
+<h6>Experience:</h6><p>{{job.experience}}</p><br>
+<h6>No. of Vacancy:</h6><p>{{job.no_of_vacancy}}</p><br>
+<h6>Description:</h6><p>{{job.description}}</p><br>
+<h6>Requirements:</h6><p>{{job.requirements}}</p><br>
+<h6>Salary:</h6><p>{{job.salary}}</p><br>
+<h1><a href="{% url 'job:apply-job' job.pk %}">Apply</a></h1>

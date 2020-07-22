@@ -1,0 +1,52 @@
+
+{% extends "admin_base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+    <li{% if message.tags %} class="alert alert-success" role="alert" {% endif %}>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Job List
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>S.N</th>
+                        <th>Job</th>
+                        <th>Company</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	{% for job in jobs %}
+                	<tr>
+                        <td>{{forloop.counter}}</td>
+						<td>{{job.position}}</td>
+                        <td>{{job.company}}</td>
+						<td><a href="{% url 'job:update-job' job.pk %}" class="btn btn-success btn-sm">Edit</a><span> </span><a href="{% url 'job:job-detail' job.pk %}" class="btn btn-success btn-sm">View Detail</a></td>
+					{% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+            {% include 'paginator.html'%}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block js%}
+
+{% endblock js%}
+<!-- <script src="{% static 'js/paginator.js' %}"></script> -->

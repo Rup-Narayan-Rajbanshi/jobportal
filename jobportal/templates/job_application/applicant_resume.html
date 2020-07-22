@@ -1,0 +1,30 @@
+{% extends "admin_base.html" %}
+{% load crispy_forms_tags %} 
+{% load static %}
+{% block content %}
+<div class="site-section bg-light">
+	<div class="container">
+	    <div class="row"> 
+	    	<div class="col-md-12 col-lg-8 mb-5">
+		        <div class="p-5 bg-white">
+					<h6>Name:</h6><p>{{resume.name}}</p>
+					<h6>Date Of Birth:</h6><p>{{resume.dob}}</p>
+					<h6>Current Address:</h6><p>{{resume.current_address}}</p>
+					<h6>Permanent Address:</h6><p>{{resume.permanent_address}}</p>
+					<h6>Phone No:</h6><p>{{resume.phone_no}}</p>
+					<h6>Martial Status:</h6><p>{{resume.martial_status}}</p>        
+					<h6>Website:</h6><p>{{resume.website}}</p>
+					<h6>Languages:</h6><p>{{resume.languages}}</p>
+					<h6>Hobbies:</h6><p>{{resume.Hobbies}}</p>
+					<h6>Skills:</h6><p>{{resume.skills}}</p>
+					<h6>Trainings or Certification:</h6><p>{{resume.training_and_certification}}</p>
+					<h6>Experience:</h6><p>{{resume.experience}}</p>
+					<h6>Project Description:</h6><p>{{resume.project_description}}</p>
+					<h6>Project Link:</h6><p>{{resume.project_link}}</p>
+	        	</div>
+	        </div>
+	    </div>
+	</div>
+</div>
+
+{% endblock content %}

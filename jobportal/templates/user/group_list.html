@@ -1,0 +1,32 @@
+
+{% extends "admin_base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        User List
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>S.N</th>
+                        <th>Group</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	{% for group in groups %}
+                	<tr>
+                        <td>{{forloop.counter}}</td>
+						<td>{{group.name}}</td>
+					{% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

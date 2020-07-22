@@ -1,0 +1,45 @@
+{% extends "admin_base.html" %}
+{% load crispy_forms_tags %} 
+{% load static %}
+{% block content %}
+<div class="site-section bg-light">
+
+	{% if messages %}
+      <div class = "alert alert-danger invalid-feedback d-block text-center mx-3 fade show" role="alert">
+      	{% for message in messages %}
+      	 <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endif %}
+	
+	
+
+
+	<div class="container">
+	    <div class="row"> 
+	    	<div class="col-md-12 col-lg-8 mb-5">
+		        <div class="p-5 bg-white">			
+		        	<div class="img-border mb-5">
+		        	</div>
+					<h5>Company:</h5><p>{{ job_application.job.company}}</p><br>
+					<h5>Applicant Name:</h5><p>{{job_application.name}}</p><br>
+					<h5>Education:</h5><p>{{job_application.education}}</p><br>
+					<h5>Experience:</h5><p>{{job_application.experience}}</p><br>
+					<h5>Skills:</h5><p>{{job_application.skills}}</p><br>
+					{% if job_application.cv %}
+						<h5>CV:</h5><a href="{{job_application.cv.url}}" target="_blank">{{job_application.cv}}</a>
+					{% else %}
+						<h5>CV:</h5>{{job_application.cv}}
+					{% endif %}
+					<h5>Letter:</h5><p>{{job_application.letter}}</p><br>
+					<a href="{% url 'job:set-interview' job_application.id %} " class="btn btn-success">Set Interview</a>
+	        	</div>
+	        </div>
+	    </div>
+	</div>
+</div>
+
+{% endblock content %}

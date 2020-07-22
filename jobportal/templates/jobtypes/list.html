@@ -1,0 +1,33 @@
+{% extends "admin_base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Job Types
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>S.N</th>
+                        <th>Job Types</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	{% for type in jobtypes %}
+                	<tr>
+                        <td>{{forloop.counter}}</td>
+						<td>{{type}}</td>
+						<td><a href="{% url 'job:update-jobtype' type.pk %}" class="btn btn-success btn-sm">Edit</a></td>
+					{% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

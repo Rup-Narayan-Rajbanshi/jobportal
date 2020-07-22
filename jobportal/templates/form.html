@@ -1,0 +1,20 @@
+{% load crispy_forms_tags %}
+
+<div id="layoutAuthentication_content">
+    <main>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow-lg border-0 rounded-lg mt-5">
+                        <div class="card-body">
+                            <form method="post" enctype="multipart/form-data">{% csrf_token %}
+                                {{form|crispy}}
+                            	<input type="submit" name="submit" value="Submit" class="btn btn-success">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
