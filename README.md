@@ -1,3 +1,9 @@
+<h3> Live Demo:</h3>http://rupnarayan163.pythonanywhere.com
+
+Admin login:</br>
+username: root </br>
+password: root </br>
+
 # Jobportal using Django
 <h3>Some of the functionality of this project are as follows:</h3>
     1. User management ( Register, SignIN, SignOut, Update)</br>
