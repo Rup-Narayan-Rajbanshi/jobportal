@@ -20,6 +20,7 @@ password: root </br>
     11. Hire Applicant</br>
     12. Filter Applicant list according to Company, Name, Selected, etc</br>
     13. Download CSV file for Filtered Applicant List</br>
+    14. RestAPI Build for users, jobs, job applications and so on.
 
 # Database:
 -Postgresql
