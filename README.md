@@ -6,7 +6,7 @@ password: root </br>
 
 # Jobportal using Django
 <h3>Some of the functionality of this project are as follows:</h3>
-    1. User management ( Register, SignIN, SignOut, Update)</br>
+    1. User management ( Register, SignIN, SignOut, Update) and Login with Google account</br>
     2. View Job according to category, type, company, location, etc</br>
     3. CV upload</br>
     3. Apply for Job</br>
